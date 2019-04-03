@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import io.moh.datacollection.domain.entities.RowProfile;
+import io.moh.datacollection.exceptions.RowNotFoundException;
 
 @RestController
 public class TestController {
@@ -24,9 +25,28 @@ public class TestController {
 		return "success.";
 	}
 
-	@GetMapping("/test/rows/{rowName}")
+	@GetMapping("/test/rows/show/{rowName}")
 	public RowProfile getRowProfile(@PathVariable String rowName) {
 		return new RowProfile(rowName);
+	}
+
+	@GetMapping("/test/rows/{id}")
+	public RowProfile getRowById(@PathVariable Long id) {
+		if (id <= 0) {
+			throw new RowNotFoundException("Id - " + id + "can not less than 1");
+		}
+		RowProfile result = null;
+		for (RowProfile rowProfile : rowsList) {
+			if (rowProfile.getId() == id) {
+				result = rowProfile;
+				break;
+			}
+		}
+		if (result == null) {
+			throw new RowNotFoundException("Id - " + id + "has not found");
+		}
+
+		return result;
 	}
 
 	@GetMapping("/test/rows")
