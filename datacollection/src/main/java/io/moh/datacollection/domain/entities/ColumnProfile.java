@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -26,6 +27,7 @@ public class ColumnProfile {
 
 	@NotBlank(message = " cannot be Blank")
 	@NotNull(message = " cannot be Null")
+	@ApiModelProperty(notes = "name cannot be Blank or Null")
 	private String name;
 
 	// Refers to "columnProfile" property in "Cell" class
