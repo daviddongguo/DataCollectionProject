@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -55,7 +57,7 @@ public class TestController {
 	}
 
 	@PostMapping("/test/rows")
-	public ResponseEntity<Object> createRow(@RequestBody RowProfile row) {
+	public ResponseEntity<Object> createRow(@Valid @RequestBody RowProfile row) {
 
 		rowsList.add(row);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(row.getId())
