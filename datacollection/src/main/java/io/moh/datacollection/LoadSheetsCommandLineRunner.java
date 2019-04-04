@@ -77,7 +77,9 @@ public class LoadSheetsCommandLineRunner implements CommandLineRunner {
 
 		// Sheet
 		Sheet sheet01 = new Sheet();
+		sheet01.setName("the first sheet");
 		sheet01.setLines(lineSet01);
+		// sheet01.generateHeader();
 
 		// Sheets List
 		List<Sheet> list = new ArrayList<>();
