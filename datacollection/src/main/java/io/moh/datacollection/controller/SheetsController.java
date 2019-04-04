@@ -26,15 +26,15 @@ public class SheetsController {
 		return repository.findAll();
 	}
 
-	@GetMapping("/sheets/{id}")
-	public Sheet getValues(@PathVariable long id) {
-
-		return repository.findById(id).get();
-	}
-
 	@PostMapping("/sheets")
 	public Sheet addValue(@RequestBody Sheet value) {
 		Sheet dbValue = repository.save(value);
 		return dbValue;
 	}
+
+	@GetMapping("/sheets/{id}")
+	public Sheet getValues(@PathVariable long id) {
+		return repository.findById(id).get();
+	}
+
 }
