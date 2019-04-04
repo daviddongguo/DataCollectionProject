@@ -20,7 +20,7 @@ import io.moh.datacollection.exceptions.RowNotFoundException;
 @RestController
 public class TestController {
 
-	private List<RowProfile> rowsList = new ArrayList<>();
+	public List<RowProfile> rowsList = new ArrayList<>();
 
 	@GetMapping("/test")
 	public String getTestString() {
