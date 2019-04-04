@@ -29,6 +29,12 @@ public class LoadSheetsCommandLineRunner implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
+		loadOneSheet(repository);
+
+		log.info("sheets loaded successfully.");
+	}
+
+	public void loadOneSheet(SheetRepository repository) {
 		// Define Column
 		ColumnProfile column01 = new ColumnProfile();
 		column01.setName("Name");
@@ -79,15 +85,13 @@ public class LoadSheetsCommandLineRunner implements CommandLineRunner {
 		Sheet sheet01 = new Sheet();
 		sheet01.setName("the first sheet");
 		sheet01.setLines(lineSet01);
-		// sheet01.generateHeader();
+		sheet01.generateHeader();
 
 		// Sheets List
 		List<Sheet> list = new ArrayList<>();
 		list.add(sheet01);
 
 		repository.saveAll(list);
-
-		log.info("sheets loaded successfully.");
 	}
 
 }
