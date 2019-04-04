@@ -10,9 +10,9 @@ import io.moh.datacollection.controller.TestController;
 import io.moh.datacollection.domain.entities.RowProfile;
 
 @Component
-public class LoadDataCommandLineRunner implements CommandLineRunner {
+public class LoadRowCommandLineRunner implements CommandLineRunner {
 
-	private static final Logger log = LoggerFactory.getLogger(LoadDataCommandLineRunner.class);
+	private static final Logger log = LoggerFactory.getLogger(LoadRowCommandLineRunner.class);
 
 	@Autowired
 	private TestController testController;
@@ -22,9 +22,9 @@ public class LoadDataCommandLineRunner implements CommandLineRunner {
 		// TODO Auto-generated method stub
 		// Define Row
 		RowProfile row01 = new RowProfile();
-		row01.setName("the first line");
+		row01.setName("third line");
 		RowProfile row02 = new RowProfile();
-		row02.setName("the second line");
+		row02.setName("forth line");
 
 		testController.rowsList.add(row01);
 		testController.rowsList.add(row02);
