@@ -1,7 +1,6 @@
 package io.moh.datacollection.domain.entities;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -38,7 +37,6 @@ public class Sheet {
 	private Set<Line> lines;
 
 	public Line getLineById(Long id) {
-
 		Line line = null;
 		for (Line l : this.lines) {
 			if (l.getId() == id) {
@@ -63,10 +61,15 @@ public class Sheet {
 	}
 
 	public void generateHeader() {
-		Set<ColumnProfile> header = new HashSet<>();
-		for (Line l : this.lines) {
-			header.addAll(l.deduceHeader());
+//		Set<ColumnProfile> header = new HashSet<>();
+//		for (Line line : this.lines) {
+//			header.addAll(line.deduceHeader());
+//		}
+//		this.header = header;
+
+		for (Line line : this.lines) {
+			this.header = line.deduceHeader();
+			break;
 		}
-		this.header = header;
 	}
 }
